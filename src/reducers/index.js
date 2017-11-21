@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import budget from "./budjet";
+import budget from "./budget";
 import farm from "./farm";
 import market from "./market";
 
