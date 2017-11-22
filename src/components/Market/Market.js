@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import Order from "../Order";
 import "./Market.css";
 import { connect } from "react-redux";
-import { createOrder, moveOrderToFarm } from "../../actions/marketActions";
+import {
+  createOrder,
+  moveOrderToFarm
+} from "../../actions/marketActions";
 let id = 0;
 const getId = () => {
   id += 1;
@@ -26,7 +29,10 @@ export const vegetables = [
 const getNewOrder = () => {
   return {
     id: getId(),
-    name: vegetables[Math.floor(Math.random() * vegetables.length)],
+    name:
+      vegetables[
+        Math.floor(Math.random() * vegetables.length)
+      ],
     price: 100 + Math.floor(Math.random() * 100),
     createdAt: new Date()
   };
@@ -39,7 +45,9 @@ export class Market extends Component {
   };
 
   moveOrderToFarm = () => {
-    const order = this.props.orders[this.props.orders.length - 1];
+    const order = this.props.orders[
+      this.props.orders.length - 1
+    ];
     this.props.moveOrderToFarm(order);
   };
 
@@ -48,8 +56,13 @@ export class Market extends Component {
     return (
       <div className="market">
         <h2>Новые заказы в магазине</h2>
-        <button onClick={this.createNewOrder}>Создать заказ</button>
-        <button onClick={this.moveOrderToFarm} disabled={!orders.length}>
+        <button onClick={this.createNewOrder}>
+          Создать заказ
+        </button>
+        <button
+          onClick={this.moveOrderToFarm}
+          disabled={!orders.length}
+        >
           Отправить заказ на ферму
         </button>
         <div className="order-list">
@@ -68,7 +81,7 @@ export class Market extends Component {
 }
 
 const mapStateToProps = state => ({
-  orders: state.market
+  orders: state.market.orders
 });
 
 const mapDispatchToProps = {
@@ -76,4 +89,6 @@ const mapDispatchToProps = {
   moveOrderToFarm
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Market);
+export default connect(mapStateToProps, mapDispatchToProps)(
+  Market
+);

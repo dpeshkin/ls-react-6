@@ -6,7 +6,9 @@ import Order from "../Order";
 
 class Farm extends Component {
   moveOrderToConsumer = () => {
-    const order = this.props.orders[this.props.orders.length - 1];
+    const order = this.props.orders[
+      this.props.orders.length - 1
+    ];
     this.props.moveOrderToCustomer(order);
   };
   render() {
@@ -14,7 +16,10 @@ class Farm extends Component {
     return (
       <div className="farm">
         <h2>Производство на ферме</h2>
-        <button onClick={this.moveOrderToConsumer} disabled={!orders.length}>
+        <button
+          onClick={this.moveOrderToConsumer}
+          disabled={!orders.length}
+        >
           Отправить урожай клиенту
         </button>
         <div className="order-list">
@@ -33,11 +38,13 @@ class Farm extends Component {
 }
 
 const mapStateToProps = state => ({
-  orders: state.farm
+  orders: state.farm.orders
 });
 
 const mapDispatchToProps = {
   moveOrderToCustomer
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Farm);
+export default connect(mapStateToProps, mapDispatchToProps)(
+  Farm
+);
